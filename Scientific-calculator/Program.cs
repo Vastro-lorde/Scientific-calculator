@@ -8,35 +8,34 @@ namespace SpiritCalculator
     {
         public static void Main()
         {
-            while (0 < 1)
+            int end = 0;
+            while (end < 1)
             {
                 
                 Console.WriteLine(
                     "\n" +
                     "\n" +
                     "\n" +
-                    "<<<<<<<<<<SPIRIT SCIENTIC CALCULATOR>>>>>>>>>>\n" +
+                    "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<SPIRIT SCIENTIC CALCULATOR>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n" +
                     "\n" +
                     "CHOOSE A NUMBER TO PERFORM THAT OPERATION\n" +
                     "\n" +
-                    "1. addition\n" +
-                    "2. subtraction\n" +
-                    "3. multiplication\n" +
-                    "4. division\n" +
-                    "5. modulo(remainder)\n" +
-                    "6. square\n" +
+                    "SIMPLE ARITHEMETIC                             TRIGNOMETRY\n" +
+                    "1. addition                                    11. sine\n" +
+                    "2. subtraction                                 12. cosine\n" +
+                    "3. multiplication                              13. tan\n" +
+                    "4. division                                    14. cosec\n" +
+                    "5. modulo(remainder)                           15. sec\n" +
+                    "6. square                                      16. cot\n" +
                     "7. square root\n" +
                     "8. cube\n" +
                     "9. cube root\n" +
                     "10. exponentials\n" +
                     "\n" +
-                    "TRIGNOMETRY\n" +
-                    "11. sine\n" +
-                    "12. cosine\n" +
-                    "13. tan\n" +
-                    "14. cosec\n" +
-                    "15. sec\n" +
-                    "16. cot"
+                    "FACTORIAL                                      LOGARITHM\n" +
+                    "17. factorial                                  19. log\n" +
+                    "18. 10^x                                       20. ln\n" +
+                    "21. EXIT"
                     );
                 var InputNum = Console.ReadLine();
                 if (String.IsNullOrEmpty(InputNum))
@@ -53,6 +52,10 @@ namespace SpiritCalculator
                     Console.Clear();
                     Console.WriteLine("Incorrect input");
                     continue;
+                }
+                if (Convert.ToInt32(InputNum) == 21)
+                {
+                    end += 3;
                 }
                 static (double, double, string) binaryOperation(string action)
                 {
@@ -231,8 +234,49 @@ namespace SpiritCalculator
                         Console.WriteLine($"The Cot of {a} is {Math.Round(1 / Math.Tan(a), 4)} in rads," +
                             $" {1 / Math.Round(Math.Tan(a * Math.PI / 180), 2)} in Degrees and {Math.Round(1 / Math.Round(Math.Tan(a * Math.PI / 200), 3), 2)} in grads");
                         break;
+                    case 17:
+                        // factorial
+                        Console.Clear();
+                        Console.WriteLine("Calculate factorial, Input Number :");
+                        a = singleOperation();
+                        for (double i = a - 1; i > 0; i--)
+                        {
+                            a *= i;
+                        }
+                        Console.Clear();
+                        Console.WriteLine($"The Factorial is {a}");
+                        break;
+                    case 18:
+                        // 10^x
+                        Console.Clear();
+                        Console.WriteLine("Input the number for 10 to be raised to :");
+                        a= singleOperation();
+                        Console.Clear();
+                        Console.WriteLine($"The exponential of 10 to {a} is {Math.Pow(10, a)}");
+                        break;
+                    case 19:
+                        // log
+                        Console.Clear();
+                        Console.WriteLine("First input the number, then input the base");
+                        (a, b, action) = binaryOperation("log");
+                        Console.Clear();
+                        Console.WriteLine($"The {action} of {a} to base {b} is {Math.Log(a, b)}");
+                        break;
+                    case 20:
+                        // ln
+                        Console.Clear();
+                        Console.WriteLine("Input the number for E to be raised to :");
+                        a = singleOperation();
+                        Console.Clear();
+                        Console.WriteLine($"The ln of {a} is {Math.Pow(Math.E, a)}");
+                        break;
+                    case 21:
+                        // EXIT
+                        Console.WriteLine("Thank you for donating your spirit");                        
+                        break;
                     default:
-                        Console.WriteLine("You chose none");
+                        Console.Clear();
+                        Console.WriteLine("Your choice is currently limited to the range of 1 to 16");
                         break;
                 }
             }
