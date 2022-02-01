@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 
 namespace SpiritCalculator
 {
-
     public static class StringExtensions
     {
         public static void Main()
@@ -11,7 +10,6 @@ namespace SpiritCalculator
             int end = 0;
             while (end < 1)
             {
-                
                 Console.WriteLine(
                     "\n" +
                     "\n" +
@@ -60,9 +58,9 @@ namespace SpiritCalculator
                 static (double, double, string) binaryOperation(string action)
                 {
                     Regex rx = new Regex(@"^(\D)+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                    Console.WriteLine($"please input the first number :");
+                    Console.WriteLine($"please input the number :");
                     var userInputa = Console.ReadLine();
-                    Console.WriteLine("please input the second number :");
+                    Console.WriteLine("please input the number :");
                     var userInputb = Console.ReadLine();
                     if (String.IsNullOrEmpty(userInputa) || String.IsNullOrEmpty(userInputb))
                     {
@@ -78,7 +76,6 @@ namespace SpiritCalculator
                     }
                     double a = Convert.ToDouble(userInputa);
                     double b = Convert.ToDouble(userInputb);
-
                     return (a, b, action);
                 }
                 static double singleOperation()
@@ -99,11 +96,8 @@ namespace SpiritCalculator
                         Main();
                     }
                     double a = Convert.ToDouble(userInputa);
-
                     return a;
                 }
-
-
                 switch (Convert.ToInt32(InputNum))
                 {
                     case 1:
@@ -257,7 +251,7 @@ namespace SpiritCalculator
                     case 19:
                         // log
                         Console.Clear();
-                        Console.WriteLine("First input the number, then input the base");
+                        Console.WriteLine("First input the log number, then input the base");
                         (a, b, action) = binaryOperation("log");
                         Console.Clear();
                         Console.WriteLine($"The {action} of {a} to base {b} is {Math.Log(a, b)}");
@@ -281,7 +275,6 @@ namespace SpiritCalculator
                 }
             }
         }
-    }
-    
+    }   
 }
 
