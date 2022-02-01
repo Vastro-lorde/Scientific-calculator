@@ -183,7 +183,8 @@ namespace SpiritCalculator
                         Console.WriteLine("Convert to Sine, Input Number :");
                         a = singleOperation();
                         Console.Clear();
-                        Console.WriteLine($"The Sine of {a} is {Math.Round(Math.Sin(a), 4)} in degree and { Math.Round(Math.Sin(a * Math.PI / 180),2) } Degree");
+                        Console.WriteLine($"The Sine of {a} is {Math.Round(Math.Sin(a), 4)} in rads," +
+                            $" { Math.Round(Math.Sin(a * Math.PI / 180),2) } in Degrees and {Math.Round(Math.Sin( a * Math.PI / 200 ),3 )} in grads");
                         break;
                     case 12:
                         // cosine
@@ -191,7 +192,8 @@ namespace SpiritCalculator
                         Console.WriteLine("Convert to Cosine, Input Number :");
                         a = singleOperation();
                         Console.Clear();
-                        Console.WriteLine($"The Cosine of {a} is {Math.Round(Math.Cos(a), 4)} in radian and {Math.Round(Math.Cos(a * Math.PI / 180), 2)} Degree");
+                        Console.WriteLine($"The Cosine of {a} is {Math.Round(Math.Cos(a), 4)} in rads," +
+                            $" { Math.Round(Math.Cos(a * Math.PI / 180), 2) } in Degrees and {Math.Round(Math.Cos(a * Math.PI / 200), 3)} in grads");
                         break;
                     case 13:
                         // tangent
@@ -199,7 +201,8 @@ namespace SpiritCalculator
                         Console.WriteLine("Convert to Tangent, Input Number :");
                         a = singleOperation();
                         Console.Clear();
-                        Console.WriteLine($"The Tangent of {a} is {Math.Round(Math.Tan(a),4)} in radian and {Math.Round(Math.Tan(a * Math.PI / 180), 2) } Degree");
+                        Console.WriteLine($"The Tangent of {a} is {Math.Round(Math.Tan(a),4)} in rads," +
+                            $" { Math.Round(Math.Tan(a * Math.PI / 180), 2) } in Degrees and {Math.Round(Math.Tan(a * Math.PI / 200), 3)} in grads");
                         break;
                     case 14:
                         // cosec
@@ -207,7 +210,8 @@ namespace SpiritCalculator
                         Console.WriteLine("Convert to cosec, Input Number :");
                         a = singleOperation();
                         Console.Clear();
-                        Console.WriteLine($"The Cosec of {a} is {1 / Math.Round(Math.Sin(a), 4)} in radian and {1 / Math.Round(Math.Sin(a * Math.PI / 180), 2)} Degree");
+                        Console.WriteLine($"The Cosec of {a} is {1 / Math.Round(Math.Sin(a), 4)} in rads," +
+                            $" {1 / Math.Round(Math.Sin(a * Math.PI / 180), 2)} in Degrees and {Math.Round(1 / Math.Round(Math.Sin(a * Math.PI / 200), 3), 2)} in grads");
                         break;
                     case 15:
                         // sec
@@ -215,7 +219,8 @@ namespace SpiritCalculator
                         Console.WriteLine("Convert to Sec, Input Number :");
                         a = singleOperation();
                         Console.Clear();
-                        Console.WriteLine($"The Sec of {a} is {Math.Round(1 / Math.Cos(a), 4)} in radian and {1 / Math.Round(Math.Cos(a * Math.PI / 180), 2)} Degree");
+                        Console.WriteLine($"The Sec of {a} is {Math.Round(1 / Math.Cos(a), 4)} in rads," +
+                            $" {1 / Math.Round(Math.Cos(a * Math.PI / 180), 2)} in Degrees and {Math.Round(1 / Math.Round(Math.Cos(a * Math.PI / 200), 3), 2)} in grads");
                         break;
                     case 16:
                         // cot
@@ -223,7 +228,8 @@ namespace SpiritCalculator
                         Console.WriteLine("Convert to Cot, Input Number :");
                         a = singleOperation();
                         Console.Clear();
-                        Console.WriteLine($"The Cot of {a} is {Math.Round(1 / Math.Tan(a), 4)} in radian and {1 / Math.Round(Math.Sin(a * Math.PI / 180), 2)} Degree");
+                        Console.WriteLine($"The Cot of {a} is {Math.Round(1 / Math.Tan(a), 4)} in rads," +
+                            $" {1 / Math.Round(Math.Tan(a * Math.PI / 180), 2)} in Degrees and {Math.Round(1 / Math.Round(Math.Tan(a * Math.PI / 200), 3), 2)} in grads");
                         break;
                     default:
                         Console.WriteLine("You chose none");
