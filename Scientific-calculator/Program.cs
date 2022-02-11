@@ -6,7 +6,9 @@ namespace SpiritCalculator
 {
     public static class StringExtensions
     {
-        public static void Main() =>  Calculate.Start();
+        public static void Main(){
+            Calculate.Start();
+        }
     }   
 }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Scientific_calculator
 {
-    internal class Calculate
+    public class Calculate
     {
         public static void Start()
         {
@@ -39,243 +39,155 @@ namespace Scientific_calculator
                     "18. 10^x                                       20. ln\n" +
                     "21. EXIT"
                     );
+                // Collect user input
                 var InputNum = Console.ReadLine();
-                if (String.IsNullOrEmpty(InputNum))
-                {
-                    Console.Clear();
-                    Console.WriteLine("You have not input a number");
-                    continue;
-                }
-                Regex rx = new Regex(@"^(\D)+$",
-                      RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-                if (rx.IsMatch(InputNum))
+                
+                if (Validate.singleValidation(InputNum))
                 {
                     Console.Clear();
-                    Console.WriteLine("Incorrect input");
-                    continue;
-                }
-                if (Convert.ToInt32(InputNum) == 21)
-                {
-                    end += 3;
-                }
-                static (double, double, string) binaryOperation(string action)
-                {
-                    Regex rx = new Regex(@"^(\D)+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                    Console.WriteLine($"please input the number :");
-                    var userInputa = Console.ReadLine();
-                    Console.WriteLine("please input the number :");
-                    var userInputb = Console.ReadLine();
-                    if (String.IsNullOrEmpty(userInputa) || String.IsNullOrEmpty(userInputb))
+                    int inputNum = Convert.ToInt32(InputNum);
+                    if (inputNum == 21)
                     {
-                        Console.Clear();
-                        Console.WriteLine("You have not input a number");
-                        Start();
-                    }
-                    if (rx.IsMatch(userInputa) || rx.IsMatch(userInputb))
+                      end += 3;
+                     }
+                    
+                    switch (inputNum)
                     {
-                        Console.Clear();
-                        Console.WriteLine("Incorrect input");
-                        Start();
+                        case 1:
+                            // addition
+                            Console.Clear();
+                            var (firstInput, secondInput) = Cal.TwoInputs();
+                            Console.WriteLine(Cal.Addition(firstInput, secondInput));
+                            break;
+                        case 2:
+                            // subtraction
+                            Console.Clear();
+                            (firstInput, secondInput) = Cal.TwoInputs();
+                            Console.WriteLine(Cal.Subtraction(firstInput, secondInput));
+                            break;
+                        case 3:
+                            // multiplication
+                            Console.Clear();
+                            (firstInput, secondInput) = Cal.TwoInputs();
+                            Console.WriteLine(Cal.Multiplication(firstInput,secondInput));
+                            break;
+                        case 4:
+                            // division
+                            Console.Clear();
+                            (firstInput, secondInput) = Cal.TwoInputs();
+                            Console.WriteLine(Cal.Quotient(firstInput, secondInput));
+                            break;
+                        case 5:
+                            // modulo
+                            Console.Clear();
+                            (firstInput, secondInput) = Cal.TwoInputs();
+                            Console.WriteLine(Cal.Modulo(firstInput, secondInput));
+                            break;
+                        case 6:
+                            // square
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Square(firstInput));
+                            break;
+                        case 7:
+                            // square root
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.SquareRoot(firstInput));
+                            break;
+                        case 8:
+                            // cube
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Cube(firstInput));
+                            break;
+                        case 9:
+                            // cube root
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.CubeRoot(firstInput));
+                            break;
+                        case 10:
+                            // exponential
+                            Console.Clear();
+                            (firstInput, secondInput) = Cal.TwoInputs();
+                            Console.WriteLine(Cal.Exponential(firstInput,secondInput));
+                            break;
+                        case 11:
+                            // sine
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Sine(firstInput));
+                            break;
+                        case 12:
+                            // cosine
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Cosine(firstInput));
+                            break;
+                        case 13:
+                            // tangent
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Tangent(firstInput));
+                            break;
+                        case 14:
+                            // cosec
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Cosecant(firstInput));
+                            break;
+                        case 15:
+                            // sec
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Secant(firstInput));
+                            break;
+                        case 16:
+                            // cot
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Cotangent(firstInput));
+                            break;
+                        case 17:
+                            // factorial
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Factorial(firstInput));
+                            break;
+                        case 18:
+                            // 10^x
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.PowerOf10(firstInput));
+                            break;
+                        case 19:
+                            // log
+                            Console.Clear();
+                            (firstInput, secondInput) = Cal.TwoInputs();
+                            Console.WriteLine(Cal.Log(firstInput,secondInput));
+                            break;
+                        case 20:
+                            // ln
+                            Console.Clear();
+                            firstInput = Cal.OneInput();
+                            Console.WriteLine(Cal.Ln(firstInput));
+                            break;
+                        case 21:
+                            // EXIT
+                            Console.WriteLine("Thank you for donating your spirit");
+                            break;
+                        default:
+                            Console.Clear();
+                            Console.WriteLine("Your choice is currently limited to the range of 1 to 16");
+                            break;
                     }
-                    double a = Convert.ToDouble(userInputa);
-                    double b = Convert.ToDouble(userInputb);
-                    return (a, b, action);
                 }
-                static double singleOperation()
+                else
                 {
-                    Regex rx = new Regex(@"^(\D)+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                    Console.WriteLine($"please input the number :");
-                    var userInputa = Console.ReadLine();
-                    if (String.IsNullOrEmpty(userInputa))
-                    {
-                        Console.Clear();
-                        Console.WriteLine("You have not input a number");
-                        Start();
-                    }
-                    if (rx.IsMatch(userInputa))
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Incorrect input");
-                        Start();
-                    }
-                    double a = Convert.ToDouble(userInputa);
-                    return a;
-                }
-                switch (Convert.ToInt32(InputNum))
-                {
-                    case 1:
-                        // addition
-                        Console.Clear();
-                        var (a, b, action) = binaryOperation("addition");
-                        Console.Clear();
-                        Console.WriteLine($"The {action} of {a} and {b} is {a + b}");
-                        break;
-                    case 2:
-                        // subtraction
-                        Console.Clear();
-                        (a, b, action) = binaryOperation("subtraction");
-                        Console.Clear();
-                        Console.WriteLine($"The {action} of {a} and {b} is {a - b}");
-                        break;
-                    case 3:
-                        // multiplication
-                        Console.Clear();
-                        (a, b, action) = binaryOperation("multiplication");
-                        Console.Clear();
-                        Console.WriteLine($"The multiplication of {a} and {b} is {a * b}");
-                        break;
-                    case 4:
-                        // division
-                        Console.Clear();
-                        (a, b, action) = binaryOperation("division");
-                        Console.Clear();
-                        Console.WriteLine($"The {action} of {a} and {b} is {a / b}");
-                        break;
-                    case 5:
-                        // modulo
-                        Console.Clear();
-                        (a, b, action) = binaryOperation("division");
-                        Console.Clear();
-                        Console.WriteLine($"The {action} of {a} and {b} is {a % b}");
-                        break;
-                    case 6:
-                        // square
-                        Console.Clear();
-                        Console.WriteLine("please input the number to be Squared :");
-                        a = Convert.ToDouble(Console.ReadLine());
-                        Console.Clear();
-                        Console.WriteLine($"The square of {a} is {Math.Pow(a, 2)}");
-                        break;
-                    case 7:
-                        // square root
-                        Console.Clear();
-                        Console.WriteLine("please input the number to check root :");
-                        a = Convert.ToDouble(Console.ReadLine());
-                        Console.Clear();
-                        Console.WriteLine($"The square root of {a} is {Math.Pow(a, 0.5)}");
-                        break;
-                    case 8:
-                        // cube
-                        Console.Clear();
-                        Console.WriteLine("please input the number :");
-                        a = Convert.ToDouble(Console.ReadLine());
-                        Console.Clear();
-                        Console.WriteLine($"The cube of {a} is {Math.Pow(a, 3)}");
-                        break;
-                    case 9:
-                        // cube root
-                        Console.Clear();
-                        Console.WriteLine("please input the number to check the cube root :");
-                        a = Convert.ToDouble(Console.ReadLine());
-                        Console.Clear();
-                        Console.WriteLine($"The cube root of {a} is {Math.Cbrt(a)}");
-                        break;
-                    case 10:
-                        // exponential
-                        Console.Clear();
-                        (a, b, action) = binaryOperation("exponential");
-                        Console.Clear();
-                        Console.WriteLine($"The exponential of {a} to {b} is {Math.Pow(a, b)}");
-                        break;
-                    case 11:
-                        // sine
-                        Console.Clear();
-                        Console.WriteLine("Convert to Sine, Input Number :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The Sine of {a} is {Math.Round(Math.Sin(a), 4)} in rads," +
-                            $" { Math.Round(Math.Sin(a * Math.PI / 180), 2) } in Degrees and {Math.Round(Math.Sin(a * Math.PI / 200), 3)} in grads");
-                        break;
-                    case 12:
-                        // cosine
-                        Console.Clear();
-                        Console.WriteLine("Convert to Cosine, Input Number :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The Cosine of {a} is {Math.Round(Math.Cos(a), 4)} in rads," +
-                            $" { Math.Round(Math.Cos(a * Math.PI / 180), 2) } in Degrees and {Math.Round(Math.Cos(a * Math.PI / 200), 3)} in grads");
-                        break;
-                    case 13:
-                        // tangent
-                        Console.Clear();
-                        Console.WriteLine("Convert to Tangent, Input Number :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The Tangent of {a} is {Math.Round(Math.Tan(a), 4)} in rads," +
-                            $" { Math.Round(Math.Tan(a * Math.PI / 180), 2) } in Degrees and {Math.Round(Math.Tan(a * Math.PI / 200), 3)} in grads");
-                        break;
-                    case 14:
-                        // cosec
-                        Console.Clear();
-                        Console.WriteLine("Convert to cosec, Input Number :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The Cosec of {a} is {1 / Math.Round(Math.Sin(a), 4)} in rads," +
-                            $" {1 / Math.Round(Math.Sin(a * Math.PI / 180), 2)} in Degrees and {Math.Round(1 / Math.Round(Math.Sin(a * Math.PI / 200), 3), 2)} in grads");
-                        break;
-                    case 15:
-                        // sec
-                        Console.Clear();
-                        Console.WriteLine("Convert to Sec, Input Number :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The Sec of {a} is {Math.Round(1 / Math.Cos(a), 4)} in rads," +
-                            $" {1 / Math.Round(Math.Cos(a * Math.PI / 180), 2)} in Degrees and {Math.Round(1 / Math.Round(Math.Cos(a * Math.PI / 200), 3), 2)} in grads");
-                        break;
-                    case 16:
-                        // cot
-                        Console.Clear();
-                        Console.WriteLine("Convert to Cot, Input Number :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The Cot of {a} is {Math.Round(1 / Math.Tan(a), 4)} in rads," +
-                            $" {1 / Math.Round(Math.Tan(a * Math.PI / 180), 2)} in Degrees and {Math.Round(1 / Math.Round(Math.Tan(a * Math.PI / 200), 3), 2)} in grads");
-                        break;
-                    case 17:
-                        // factorial
-                        Console.Clear();
-                        Console.WriteLine("Calculate factorial, Input Number :");
-                        a = singleOperation();
-                        for (double i = a - 1; i > 0; i--)
-                        {
-                            a *= i;
-                        }
-                        Console.Clear();
-                        Console.WriteLine($"The Factorial is {a}");
-                        break;
-                    case 18:
-                        // 10^x
-                        Console.Clear();
-                        Console.WriteLine("Input the number for 10 to be raised to :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The exponential of 10 to {a} is {Math.Pow(10, a)}");
-                        break;
-                    case 19:
-                        // log
-                        Console.Clear();
-                        Console.WriteLine("First input the log number, then input the base");
-                        (a, b, action) = binaryOperation("log");
-                        Console.Clear();
-                        Console.WriteLine($"The {action} of {a} to base {b} is {Math.Log(a, b)}");
-                        break;
-                    case 20:
-                        // ln
-                        Console.Clear();
-                        Console.WriteLine("Input the number for E to be raised to :");
-                        a = singleOperation();
-                        Console.Clear();
-                        Console.WriteLine($"The ln of {a} is {Math.Pow(Math.E, a)}");
-                        break;
-                    case 21:
-                        // EXIT
-                        Console.WriteLine("Thank you for donating your spirit");
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Your choice is currently limited to the range of 1 to 16");
-                        break;
+                    Console.Clear();
+                    Console.WriteLine("What are you doing?");
                 }
             }
         }
